@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<!-- Déclaration du charset UTF-8 pour supporter les caractères spéciaux -->
+	<meta charset="UTF-8">
+	<!-- Titre de la page affiché dans l'onglet du navigateur -->
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<!-- Meta tag pour la compatibilité avec les appareils mobiles, garantissant une mise à l'échelle correcte -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Préchargement des polices Google pour améliorer la performance -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Inclusion des polices Google utilisées dans la page -->
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	
+	<!-- Meta description pour le SEO (optimisation pour les moteurs de recherche) -->
+	<meta name="description" content="Description du site Sophie Bluel">
+	<!-- Lien vers le fichier CSS externe pour le style de la page -->
+	<link rel="stylesheet" href="./assets/style.css">
+	
+	<!-- Inclusion du fichier JavaScript en mode module -->
+	<script type="module" src="index.js"></script>
+	<!-- Inclusion de FontAwesome pour les icônes -->
+	<script src="https://kit.fontawesome.com/e547d28caf.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- Section de l'en-tête de la page -->
+<header>
+	<!-- Affichage du mode édition, caché par défaut -->
+	<div>
+        <p id="bandeau-edition"><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>
+    </div>
+    <!-- Titre du site et barre de navigation -->
+    <div id="title-and-nav">
+        <a href="index.html">
+            <!-- Titre principal avec le nom du site -->
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        </a>
+		<nav>
+			<!-- Liste des éléments de navigation (projets, contact, login, icône Instagram) -->
+			<ul>
+				<li><a href="#projets">Projets</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#"><span id="authText">Login</span></a></li>
+				<li><a href="https://www.instagram.com" aria-label="Instagram"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
+			</ul>			
+		</nav>
+	</div>
+</header>
+
+<!-- Section principale du site -->
+<main>
+	<!-- Introduction avec image et description de Sophie Bluel -->
+	<section id="introduction">
+		<figure>
+			<!-- Image de Sophie Bluel avec texte alternatif -->
+			<img src="./assets/images/sophie-bluel.png" alt="Image de Sophie Bluel">
+		</figure>
+		<article>
+			<!-- Titre de la section et description du travail de Sophie Bluel -->
+			<h2>Designer d'espace</h2>
+			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+		</article>
+	</section>
+
+	<!-- Section portfolio avec projets et options d'édition (si connecté) -->
+	<section id="portfolio">
+		<div id="mes-projets-logged-in">
+			<h2>Mes Projets</h2>
+			<!-- Bouton pour ouvrir la modale d'édition de projet (affiché si connecté) -->
+			<button id="openModal"><i class="fa-regular fa-pen-to-square"></i> Modifier</button>
+		</div>
+		<!-- Boutons de filtrage des projets par catégorie -->
+		<div id="categories_id" class="categories">
+			<button id="Tous">Tous</button>
+		</div>
+		<!-- Galerie des projets -->
+		<div id="gallery_id" class="gallery">
+		</div>
+	</section>
+
+	<!-- Première modale : galerie photo avec possibilité de modification -->
+	<section id="firstModal" class="modal">
+		<div class="modal-content">
+			<!-- Bouton pour fermer la modale -->
+			<i class="close-modal fa-solid fa-xmark"></i>
+			<!-- Titre de la modale -->
+			<h3 class="titre-modal">Galerie photo</h3>
+			<!-- Mini galerie d'aperçu des images -->
+			<div id="mini_gallery_id" class="mini_gallery"></div>
+			<hr>
+			<!-- Bouton pour ouvrir la modale d'ajout de photo -->
+			<div id="addPhotoModal-btn-zone">
+				<button id="addPhotoModalBtn" class="ajoutPhoto">Ajouter une photo</button>	
+			</div>
+		</div>
+	</section>
+
+	<!-- Deuxième modale : ajout d'une photo dans le portfolio -->
+	<section id="addPhotoModal" class="modal">
+		<div class="modal-content">
+			<!-- Bouton retour et bouton fermer -->
+			<button class="return-button"><i class="fa-solid fa-arrow-left"></i></button>
+			<i class="close-modal fa-solid fa-xmark"></i>
+			<!-- Titre de la modale pour l'ajout de photo -->
+			<h3 class="titre-modal">Ajout d'une photo</h3>
+			<!-- Formulaire pour ajouter une photo -->
+			<form enctype="multipart/form-data" action="#" method="post" id="photoPost">
+				<!-- Zone d'ajout de fichier avec aperçu de l'image -->
+				<div id="grey-input-zone">
+					<!-- Icône et aperçu de l'image -->
+					<i id="photo-icon" class="fa-regular fa-image"></i>
+					<div id="imagePreviewContainer">
+						<!-- Image de prévisualisation (masquée au départ) -->
+						<img id="imagePreview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBA==" style="display: none;" alt="Aperçu de l'image" />
+					</div>
+					<!-- Bouton pour choisir une image à uploader -->
+					<div id="input-file-div">
+						<label for="imageUrl" id="button-add-photo">
+							<span id="text-add-photo">+ Ajouter Photo</span>
+							<input type="file" name="file" id="imageUrl" required />
+						</label>
+					</div>
+					<!-- Texte sous le bouton d'ajout de photo (formats acceptés) -->
+					<p id="subtext-add-photo">jpg, png : 4mo max</p>
+				</div>
+				<!-- Champs pour le titre de la photo et la catégorie -->
+				<label for="titrePhoto">Titre</label>
+				<input type="text" name="titre" id="titrePhoto" required />
+				<label for="categoriePhoto">Catégorie</label>
+				<select name="categorie" id="categoriePhoto" required>
+					<option value="">Sélectionnez une catégorie</option>
+					<option value="1">1 = Objets</option>
+					<option value="2">2 = Appartements</option>
+					<option value="3">3 = Hôtels & Restaurants</option>
+				</select>
+				<!-- Message d'erreur si les champs ne sont pas remplis -->
+				<div id="champsRequis" class="champsRequis">
+					Merci de compléter les champs requis
+				</div>
+				<!-- Message de succès après l'ajout -->
+				<div id="success-message" class="success-message">
+					La photo a bien été ajoutée à la galerie
+				</div>
+				<hr>
+				<!-- Bouton pour valider l'ajout de la photo -->
+				<div id="validerModal-zone">
+					<button type="submit" class="disabled" id="validerModal">Valider</button>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<!-- Section Contact avec formulaire -->
+	<section id="contact">
+		<h2>Contact</h2>
+		<p>Vous avez un projet ? Discutons-en !</p>
+		<!-- Formulaire de contact -->
+		<form action="#" method="post">
+			<!-- Champ pour le nom -->
+			<label for="name">Nom</label>
+			<input type="text" name="name" id="name" />
+			<!-- Champ pour l'email -->
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email" />
+			<!-- Champ pour le message -->
+			<label for="message">Message</label>
+			<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			<!-- Bouton pour envoyer le formulaire -->
+			<input type="submit" value="Envoyer" />
+		</form>
+	</section>
+</main>
+
+<!-- Pied de page avec lien vers les mentions légales -->
+<footer>
+	<nav>
+		<ul>
+			<li><a href="#">Mentions Légales</a></li>
+		</ul>
+	</nav>
+</footer>
+
+</body>
+</html>

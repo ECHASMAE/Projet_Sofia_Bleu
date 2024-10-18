@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Meta informations et lien vers la feuille de style -->
+	<meta charset="UTF-8">
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Préchargement des polices Google -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	
+	<!-- Lien vers la feuille de style -->
+	<link rel="stylesheet" href="./assets/style.css">
+	
+	<!-- Inclusion du script JavaScript pour la connexion -->
+	<script type="module" src="login.js"></script>
+</head>
+<body>
+<!-- En-tête -->
+<header>
+    <!-- Titre et navigation -->
+    <div id="title-and-nav">
+        <a href="index.html">
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        </a>
+        <nav>
+            <ul>
+                <li>Projets</li>
+                <li>contact</li>
+                <li>login</li>
+                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Section principale : formulaire de connexion -->
+<main>
+    <section id="login">
+        <article>
+            <h2>Log In</h2>
+            <!-- Formulaire de connexion -->
+            <form action="#" method="post" id="formLogin">
+                <!-- Champ e-mail -->
+                <label for="email">E-mail</label>
+                <br>
+                <input type="email" name="email" id="email" required>
+                <br>
+                <!-- Champ mot de passe -->
+                <label for="password">Mot de passe</label>
+                <br>
+                <input type="password" name="password" id="password" required>
+                <br>
+                <!-- Bouton de connexion -->
+                <button type="submit" id="seConnecter">Se connecter</button>
+            </form>
+            <!-- Lien vers "Mot de passe oublié" -->
+            <p>Mot de passe oublié</p>
+        </article>
+    </section>
+
+    <!-- Zone d'affichage des messages d'erreur -->
+    <div id="error-message"></div>
+</main>
+
+<!-- Pied de page -->
+<footer>
+    <nav>
+        <ul>
+            <li>Mentions Légales</li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+</html>
